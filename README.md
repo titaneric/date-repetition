@@ -8,7 +8,7 @@ Things you can do
 - Repeat on days (Mon, Sun etc.) in weeks
 - Repeat after several times
 - Repeat until some day
-- Repeat the specific week orders in month (E.g. Sunday of the second week in May)
+- Repeat the specific week orders in month (E.g. Monthly on the second Sunday)
 
 Example
 
