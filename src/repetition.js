@@ -11,7 +11,7 @@ function* weeklyDayGenerator(option) {
   let currentDay = dayStart.clone();
 
   while (true) {
-    for (let weekDay of option.weekDayList) {
+    for (const weekDay of option.weekDayList) {
       const day = currentDay.day(weekDay);
       if (day >= dayStart) yield day;
     }
@@ -76,17 +76,17 @@ function untilFinishDate(option, list) {
   }
 }
 function generateRepetition(option) {
-  option = { ...option, ...week.getDateInfo(option.dateStart) };
+  const extended_option = { ...option, ...week.getDateInfo(option.dateStart) };
   const list = [];
 
-  if (option.repeat) {
-    if (option.decision === 'u') {
-      untilFinishDate(option, list);
-    } else if (option.decision === 'a') {
-      afterOccurances(option, list);
+  if (extended_option.repeat) {
+    if (extended_option.decision === 'u') {
+      untilFinishDate(extended_option, list);
+    } else if (extended_option.decision === 'a') {
+      afterOccurances(extended_option, list);
     }
   } else {
-    list.push(option.momentDateStart);
+    list.push(extended_option.momentDateStart);
   }
   return list;
 }

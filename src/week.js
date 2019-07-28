@@ -28,6 +28,6 @@ function getDateInfo(d) {
     momentDateStart: moment(d),
     weekOrder: weekOrder(d),
   }
-};
+}
 
 export default { weekOrder, nextDayOfStartOfMonth, getDateInfo };
