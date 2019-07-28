@@ -2,7 +2,8 @@
   "name": "date-repetition",
   "version": "1.0.0",
   "description": "Implement the custom recurrance feature of Google Calender.",
-  "private": true,
+  "main": "index.js",
+  "private": false,
   "directories": {
     "test": "test"
   },

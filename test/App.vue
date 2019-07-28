@@ -10,7 +10,7 @@
 <script>
 import moment from 'moment';
 
-import repetition from "./src/repetition";
+import repetition from "../repetition";
 
 export default {
   data() {
