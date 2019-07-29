@@ -3,92 +3,47 @@
 , "ignorePropertyModificationsFor": ["tree"] }] */
 
 import week from './week';
+import dateGenerator from './generator';
 
 import moment from 'moment';
 
-function* weeklyDayGenerator(option) {
-  const dayStart = moment(option.dateStart);
-  let currentDay = dayStart.clone();
 
-  while (true) {
-    for (const weekDay of option.weekDayList) {
-      const day = currentDay.day(weekDay);
-      if (day >= dayStart) yield day;
+export default class DateRepetition {
+  constructor(option) {
+    this.option = { ...option, ...week.getDateInfo(option.dateStart) };
+  }
+
+  afterOccurances(occurances) {
+    const list = [];
+
+    const gen = dateGenerator(this.option);
+    let day = this.option.momentDateStart;
+
+    for (let i = 0; i < occurances; i += 1) {
+      let k = 0;
+      do {
+        day = gen.next().value;
+        list.push(day.clone());
+        k++;
+      } while (this.option.durationUnit === 'w' && k < this.option.weekDayList.length)
     }
+    return list;
 
-    currentDay = currentDay.add(option.durationAmount, option.durationUnit);
   }
-}
+  untilFinishDate(dateFinish) {
+    const list = [];
 
-function* monthlyOnOrdinalDayGenerator(option) {
-  const dayStart = moment(option.dateStart);
-  let currentDay = dayStart.clone();
+    const gen = dateGenerator(this.option);
+    const momentDateFinish = moment(dateFinish);
+    let day = this.option.momentDateStart;
 
-  while (true) {
-    yield currentDay;
-    const nextMonth = currentDay
-      .add(option.durationAmount, option.durationUnit);
-
-    const nextDay = week.nextDayOfStartOfMonth(nextMonth, option.momentDateStart.format('ddd'));
-    currentDay = nextDay
-      .add(option.weekOrder - 1, 'week')
-      .day(option.momentDateStart.format('ddd'));
-  }
-}
-
-function* normalRepeatedDayGenerator(option) {
-  const dayStart = moment(option.dateStart);
-  let currentDay = dayStart.clone();
-  while (true) {
-    yield currentDay;
-    currentDay = currentDay.add(option.durationAmount, option.durationUnitUnit);
-  }
-}
-function* dateGenerator(option) {
-  if (option.durationUnit === 'w') {
-    yield* weeklyDayGenerator(option);
-  } else if (option.durationUnit === 'M' && option.monthDecision === 'w') {
-    yield* monthlyOnOrdinalDayGenerator(option);
-  } else {
-    yield* normalRepeatedDayGenerator(option);
-  }
-}
-function afterOccurances(option, list) {
-  const gen = dateGenerator(option);
-  let day = option.momentDateStart;
-
-  for (let i = 0; i < option.occurances; i += 1) {
-    let k = 0;
-    do {
-      day = gen.next().value;
+    while ((day = gen.next().value) <= momentDateFinish) {
       list.push(day.clone());
-      k++;
-    } while (option.durationUnit === 'w' && k < option.weekDayList.length)
-  }
-}
-function untilFinishDate(option, list) {
-  const gen = dateGenerator(option);
-  const momentDateFinish = moment(option.dateFinish);
-  let day = option.momentDateStart;
-
-  while ((day = gen.next().value) <= momentDateFinish) {
-    list.push(day.clone());
-  }
-}
-function generateRepetition(option) {
-  const extended_option = { ...option, ...week.getDateInfo(option.dateStart) };
-  const list = [];
-
-  if (extended_option.repeat) {
-    if (extended_option.decision === 'u') {
-      untilFinishDate(extended_option, list);
-    } else if (extended_option.decision === 'a') {
-      afterOccurances(extended_option, list);
     }
-  } else {
-    list.push(extended_option.momentDateStart);
+    return list;
   }
-  return list;
+  noRepeat() {
+    return [this.option.momentDateStart];
+  }
 }
 
-export default { generateRepetition }
