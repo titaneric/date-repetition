@@ -2,46 +2,54 @@
   <div id="app">
     <h1>Demo</h1>
     <ul>
-      <li v-for="(date, index) in demo" v-bind:key="index">{{ date }}</li>
+      <li v-for="(date, index) in order_demo" v-bind:key="index">{{ date }}</li>
     </ul>
   </div>
 </template>
 
 <script>
-import moment from 'moment';
+import moment from "moment";
 
-import repetition from "../repetition";
+import DateRepetition from "../index";
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
-    demo() {
+    after_demo() {
       const currentDate = new Date();
-      // const after_option = {
-      //   repeat: true,
-      //   dateStart: currentDate,
-      //   weekDayList: [0, 1, 2],
-      //   durationAmount: 1,
-      //   durationUnit: "w",
-      //   decision: "a",
-      //   occurances: 5
-      // };
+      const after_option = {
+        dateStart: currentDate,
+        weekDayList: [0, 1, 2],
+        durationAmount: 1,
+        durationUnit: "w"
+      };
 
-      // const until_option = {
-      //   repeat: true,
-      //   dateStart: currentDate,
-      //   weekDayList: [moment(currentDate).day()],
-      //   durationAmount: 2,
-      //   durationUnit: "w",
-      //   decision: "u",
-      //   dateFinish: moment(currentDate)
-      //     .add(1, "M")
-      //     .toDate(),
-      //   monthDecision: "d"
-      // };
+      const list = new DateRepetition(after_option).afterOccurances(3);
+
+      return list;
+    },
+    until_demo() {
+      const currentDate = new Date();
+
+      const until_option = {
+        dateStart: currentDate,
+        weekDayList: [moment(currentDate).day()],
+        durationAmount: 2,
+        durationUnit: "w"
+      };
+
+      const list = new DateRepetition(until_option).untilFinishDate(
+        moment(currentDate)
+          .add(1, "M")
+          .toDate()
+      );
+
+      return list;
+    },
+    order_demo() {
+      const currentDate = new Date();
 
       const order_after_option = {
         repeat: true,
@@ -49,12 +57,10 @@ export default {
         weekDayList: [moment(currentDate).day()],
         durationAmount: 1,
         durationUnit: "M",
-        decision: "a",
-        occurances: 5,
         monthDecision: "w"
       };
 
-      const list = repetition.generateRepetition(order_after_option);
+      const list = new DateRepetition(order_after_option).afterOccurances(4);
 
       return list;
     }
