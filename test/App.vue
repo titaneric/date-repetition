@@ -49,7 +49,7 @@ export default {
       return list;
     },
     order_demo() {
-      const currentDate = new Date();
+      const currentDate = new Date(2019, 7, 28);
 
       const order_after_option = {
         repeat: true,
