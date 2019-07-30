@@ -95,13 +95,13 @@ Note that the `durationUnit` and value in `weekDayList` follow the Moment.js con
 |---|---|---|
 |  `dateFinish` | Repeat until the finishing day | JS `Date` object  |
 
-### Todo
+## Todo
 
  - Strict and tough test process
  - Rewrite the weekOrder to support for 'last' Sunday monthly.
  - Better test component in Vue.
 
-### Remark
+## Remark
 
  - For me, this project is more like the practice than the library.
  - This project is the part of my other project, and I will release it soon.
