@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+  - lts/*
+
+install:
+  - npm install
+
+
+# before_deploy:
+#  - "echo 'Ready to deploy...'"
+#  - npm run test
+
+# deploy:
+#   provider: npm
+#   email: "chenyihuang001@gmail.com"
+#   api_key: $NPM_USER_TOKEN
+#   on:
+#     branch: master
+  
+# after_deploy:
+#  - "echo 'Already deployed!'"
