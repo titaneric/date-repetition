@@ -10,9 +10,16 @@
   "dependencies": {
     "moment": "^2.24.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.8.0",
+    "faker": "^4.1.0",
+    "jest": "^24.8.0",
+    "jest-extended": "^0.11.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -23,5 +30,13 @@
   "bugs": {
     "url": "https://github.com/titaneric/date-repetition/issues"
   },
-  "homepage": "https://github.com/titaneric/date-repetition#readme"
+  "homepage": "https://github.com/titaneric/date-repetition#readme",
+  "publishConfig": {
+    "access": "publish"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
+  }
 }

@@ -7,7 +7,7 @@
 - Select the interval unit (day, week, month)
 - Repeat on days (Mon, Sun etc.) in weeks
 - Repeat after several times
-- Repeat until some day
+- Repeat until someday
 - Repeat the specific week orders in month (E.g. Monthly on the second Sunday)
 
 ## Features
@@ -18,7 +18,7 @@
 
 ## Example
 
-### Repeat Monday, Tuesday and Wednesday weekly starting from today after 3 occurances.
+### Repeat Sunday, Monday and Tuesday weekly starting from today after 3 occurances.
 
 ```js
 const currentDate = new Date();
@@ -57,7 +57,6 @@ moment(currentDate)
 const currentDate = new Date(2019, 7, 28); // The fourth Sunday in July
 
 const order_after_option = {
-    repeat: true,
     dateStart: currentDate,
     durationAmount: 1,
     durationUnit: "M",
@@ -72,13 +71,13 @@ const list = new DateRepetition(order_after_option).afterOccurances(4);
 ### Fundamental
 | Name  | Meaning  | Available value  |
 |---|---|---|
-|  dateStart | The starting day to repeat | JS `Date` object  |
-|   durationAmount| The frequency to repeat, according to `durationUnit`  | positive integer  |
-|   durationUnit| The unit to repeat  | 'd'\|'w'\|'M'  |
-|  weekDayList | The array containing week days, only valid when `durationUnit` is **'w'**  | optional or [0-6]  |
-|   ordinalWeek| If `durationUnit` is **'M'**, set **true** if you want to get the specific order in week monthly  | optional or **true**  |
+|  `dateStart` | The starting day to repeat | JS `Date` object  |
+|   `durationAmount`| The frequency to repeat, according to `durationUnit`  | positive integer  |
+|   `durationUnit`| The unit to repeat  | 'd'\|'w'\|'M'  |
+|  `weekDayList` | The array containing week days, only valid when `durationUnit` is **'w'**.  | optional or array consisted of [0-6]  |
+|   `ordinalWeek`| If `durationUnit` is **'M'**, set **true** if you want to get the specific order in week monthly.  | optional or **true**  |
 
-Note that the `durationUnit` follow the Moment.js convention, please refer to [documentation](https://momentjs.com/docs/#/manipulating/).
+Note that the `durationUnit` and value in `weekDayList` follow the Moment.js convention, please refer to [documentation](https://momentjs.com/docs/#/manipulating/).
 
 ### After
 
@@ -86,7 +85,7 @@ Note that the `durationUnit` follow the Moment.js convention, please refer to [d
 
 | Name  | Meaning  | Available value  |
 |---|---|---|
-|  occurances | The number to repeat the event |  positive integer |
+|  `occurances` | The number to repeat the event |  positive integer |
 
 ### Until
 
@@ -94,7 +93,7 @@ Note that the `durationUnit` follow the Moment.js convention, please refer to [d
 
 | Name  | Meaning  | Available value  |
 |---|---|---|
-|  dateFinish | Repeat until the finishing day | JS `Date` object  |
+|  `dateFinish` | Repeat until the finishing day | JS `Date` object  |
 
 ### Todo
 
