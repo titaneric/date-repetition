@@ -43,7 +43,7 @@ function* normalRepeatedDayGenerator(option) {
 function* dateGenerator(option) {
   if (option.durationUnit === 'w') {
     yield* weeklyDayGenerator(option);
-  } else if (option.durationUnit === 'M' && option.monthDecision === 'w') {
+  } else if (option.durationUnit === 'M' && option.ordinalWeek) {
     yield* monthlyOnOrdinalDayGenerator(option);
   } else {
     yield* normalRepeatedDayGenerator(option);

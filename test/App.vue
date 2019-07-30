@@ -52,12 +52,10 @@ export default {
       const currentDate = new Date(2019, 7, 28);
 
       const order_after_option = {
-        repeat: true,
         dateStart: currentDate,
-        weekDayList: [moment(currentDate).day()],
         durationAmount: 1,
         durationUnit: "M",
-        monthDecision: "w"
+        ordinalWeek: true
       };
 
       const list = new DateRepetition(order_after_option).afterOccurances(4);
