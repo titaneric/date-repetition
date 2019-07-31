@@ -1,9 +1,16 @@
 import moment from 'moment';
 import faker from 'faker';
+import Chance from 'chance';
+
 import DateRepetition from "../index";
 
+function randomAfterOptionGenerator()
+{
+
+}
+
 test('Validate the day repeition', () => {
-    const currentDate = faker.date.recent(); // The fourth Sunday in July
+    const currentDate = faker.date.recent();
     const day = moment(currentDate).day();
     const after_option = {
         dateStart: currentDate,
@@ -17,7 +24,6 @@ test('Validate the day repeition', () => {
     expect(list.length).toBe(len * after_option.weekDayList.length);
     for (const [i, d] of list.entries()) {
         const moment_d = moment(d);
-        expect(moment_d.diff())
         if (i === 0) {
             expect(moment_d.diff(last_date, 'week')).toBe(0);
         } else {
@@ -27,7 +33,7 @@ test('Validate the day repeition', () => {
     }
 });
 
-test('Validate the day repeition', () => {
+test('Validate the day repetition of monthly ordinal week', () => {
     const currentDate = faker.date.recent(); // The fourth Sunday in July
     const day = moment(currentDate).day();
     const order_after_option = {
