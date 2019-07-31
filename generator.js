@@ -38,7 +38,7 @@ function* normalRepeatedDayGenerator(option) {
   let currentDay = dayStart.clone();
   while (true) {
     yield currentDay;
-    currentDay = currentDay.add(option.durationAmount, option.durationUnitUnit);
+    currentDay = currentDay.add(option.durationAmount, option.durationUnit);
   }
 }
 function* dateGenerator(option) {
