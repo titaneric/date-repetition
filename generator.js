@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import moment from 'moment';
 
 import week from './week';
@@ -51,4 +52,3 @@ function* dateGenerator(option) {
 }
 
 export default dateGenerator;
-

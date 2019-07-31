@@ -14,12 +14,16 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-jest": "^24.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.2",
     "faker": "^4.1.0",
     "jest": "^24.8.0",
     "jest-extended": "^0.11.2"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "style": "eslint ."
   },
   "repository": {
     "type": "git",

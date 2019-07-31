@@ -5,10 +5,13 @@ node_js:
 install:
   - npm install
 
-
-# before_deploy:
-#  - "echo 'Ready to deploy...'"
-#  - npm run test
+jobs:
+  include:
+    - stage: test
+      - name: "Coding style check"
+        script: npm run style
+      - name: "Unit test"
+        script: npm run test
 
 # deploy:
 #   provider: npm

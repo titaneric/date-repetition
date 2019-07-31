@@ -1,12 +1,9 @@
-/* eslint no-shadow: ["error", { "allow": ["tree"] }] */
-/* eslint no-param-reassign: ["error", { "props": true
-, "ignorePropertyModificationsFor": ["tree"] }] */
-
-import week from './week';
-import dateGenerator from './generator';
+/* eslint no-cond-assign: "error" */
 
 import moment from 'moment';
 
+import week from './week';
+import dateGenerator from './generator';
 
 export default class DateRepetition {
   constructor(option) {
@@ -24,12 +21,13 @@ export default class DateRepetition {
       do {
         day = gen.next().value;
         list.push(day.clone());
-        k++;
-      } while (this.option.durationUnit === 'w' && k < this.option.weekDayList.length)
+        k += 1;
+      } while (this.option.durationUnit === 'w' && k < this.option.weekDayList.length);
     }
-    return list;
 
+    return list;
   }
+
   untilFinishDate(dateFinish) {
     const list = [];
 
@@ -40,10 +38,11 @@ export default class DateRepetition {
     while ((day = gen.next().value) <= momentDateFinish) {
       list.push(day.clone());
     }
+
     return list;
   }
+
   noRepeat() {
     return [this.option.momentDateStart];
   }
 }
-
