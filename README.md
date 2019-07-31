@@ -1,5 +1,9 @@
 # date-repetition
 
+[![Build Status](https://travis-ci.com/titaneric/date-repetition.svg?branch=master)](https://travis-ci.com/titaneric/date-repetition)
+[![Open Source Love](https://badges.frapsoft.com/os/gpl/gpl.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+
+
 **Implement the custom date repetition feature of Google Calender.**
 
 ## Things you can do
@@ -88,7 +92,7 @@ const list = new DateRepetition(order_after_option).afterOccurances(4);
 |   `durationAmount`| The frequency to repeat, according to `durationUnit`  | positive integer  |
 |   `durationUnit`| The unit to repeat  | 'd'\|'w'\|'M'  |
 |  `weekDayList` | The array containing week days, only valid when `durationUnit` is **'w'**.  | optional or array consisted of [0-6]  |
-|   `ordinalWeek`| If `durationUnit` is **'M'**, set **true** if you want to get the specific order in week monthly.  | optional or **true**  |
+|   `ordinalWeek`| When `durationUnit` is **'M'**, set **true** if you want to get the specific order in week monthly.  | optional or **true**  |
 
 Note that the `durationUnit` and value in `weekDayList` follow the Moment.js convention, please refer to [documentation](https://momentjs.com/docs/#/manipulating/).
 
