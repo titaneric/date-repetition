@@ -5,12 +5,16 @@ node_js:
 install:
   - npm install
 
+stages:
+  - "CS test"
+  - "Unit test"
+
 jobs:
   include:
-    - stage: CS test
+    - stage: "CS test"
       script: npm run style
-      
-    - stage: Unit test
+
+    - stage: "Unit test"
       script: npm run test
 
       # deploy:
