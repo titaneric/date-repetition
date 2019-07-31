@@ -9,9 +9,9 @@ jobs:
   include:
     - stage: test
       name: "Coding style test"
-      script: npm run style
+      - script: npm run style
       name: "Unit test"
-      script: npm run test
+      - script: npm run test
 
       # deploy:
       #   provider: npm
