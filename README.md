@@ -14,13 +14,21 @@
 
  - ONLY depend on Moment.js
  - Help you to schedule your work
- - May be used in room reservation, calendar etc.
+ - Could be used in room reservation, calendar etc.
+
+## Install
+
+```bash
+npm install date-repetition
+```
 
 ## Example
 
 ### Repeat Sunday, Monday and Tuesday weekly starting from today after 3 occurances.
 
 ```js
+import DateRepetition from 'date-repetition';
+
 const currentDate = new Date();
 const after_option = {
     dateStart: currentDate,
@@ -35,6 +43,9 @@ const list = new DateRepetition(after_option).afterOccurances(3);
 ### Repeat today's week day every two weeks until the day after one month.
 
 ```js
+import moment from 'moment';
+import DateRepetition from 'date-repetition';
+
 const currentDate = new Date();
 
 const until_option = {
@@ -54,6 +65,8 @@ moment(currentDate)
 ### Repeat monthly on fourth Sunday after 4 occurances
 
 ```js
+import DateRepetition from 'date-repetition';
+
 const currentDate = new Date(2019, 7, 28); // The fourth Sunday in July
 
 const order_after_option = {
@@ -68,7 +81,7 @@ const list = new DateRepetition(order_after_option).afterOccurances(4);
 
 ## Document
 
-### Fundamental
+### Arguments
 | Name  | Meaning  | Available value  |
 |---|---|---|
 |  `dateStart` | The starting day to repeat | JS `Date` object  |
@@ -103,5 +116,16 @@ Note that the `durationUnit` and value in `weekDayList` follow the Moment.js con
 
 ## Remark
 
- - For me, this project is more like the practice than the library.
- - This project is the part of my other project, and I will release it soon.
+ - For me, this project is more like practice than library.
+
+   Just leave a note for keeping the experience.
+
+   Practice to learn
+
+    - Airbnb coding style
+    - ES6 Generator feature
+    - fundamental Jest for unit test
+    - Travis for CI/CD
+    - Wrap a npm package
+    - Some elementary knowledge for webpack, babel and npm
+    - Write documents
