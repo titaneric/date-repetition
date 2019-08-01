@@ -6,13 +6,17 @@ install:
   - npm install
 
 stages:
-  - "CS test"
+  - "Airbnb test"
+  - "Vue style test"
   - "Unit test"
 
 jobs:
   include:
-    - stage: "CS test"
-      script: npm run style
+    - stage: "Airbnb test"
+      script: npm run airbnb
+    
+    - stage: "Vue style test"
+      script: npm run vue
 
     - stage: "Unit test"
       script: npm run test
