@@ -1,11 +1,10 @@
 /* eslint-disable no-restricted-syntax */
-/* global test expect week */
+/* global test expect */
 
 import moment from 'moment';
 import faker from 'faker';
 
 import DateRepetition from '../index';
-import week from '../week';
 
 function formatDate(d) {
   return moment(d).format('YYYY/MM/DD');

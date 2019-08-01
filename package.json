@@ -8,6 +8,7 @@
     "test": "test"
   },
   "dependencies": {
+    "circular-iterator": "^1.1.5",
     "moment": "^2.24.0"
   },
   "devDependencies": {
