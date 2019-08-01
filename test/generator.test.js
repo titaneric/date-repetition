@@ -5,8 +5,8 @@ import moment from 'moment';
 import faker from 'faker';
 import circularIterator from 'circular-iterator';
 
-import dateGenerator from '../generator';
-import week from '../week';
+import dateGenerator from '../src/generator';
+import week from '../src/week';
 
 
 test('Validate the correctness of weeklyDayGenerator', () => {

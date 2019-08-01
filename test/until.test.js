@@ -4,8 +4,8 @@
 import moment from 'moment';
 import faker from 'faker';
 
-import DateRepetition from '../index';
-import aux from '../testAux';
+import DateRepetition from '../src/repetition';
+import aux from '../src/testAux';
 
 test('Validate the day repetition of monthly ordinal week', () => {
   const currentDate = faker.date.recent(); // The fourth Sunday in July

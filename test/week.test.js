@@ -3,7 +3,7 @@
 import moment from 'moment';
 import faker from 'faker';
 
-import week from '../week';
+import week from '../src/week';
 
 function dateFormat(day) {
   return moment(day).format('YYYY/M/D');
