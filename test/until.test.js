@@ -17,13 +17,13 @@ test('Validate the day repetition of monthly ordinal week', () => {
     ordinalWeek: true,
   };
   // const dateStartWeekOrder = week.weekOrder(orderAfterOption.dateStart);
-  const len = 4;
-  const list = new DateRepetition(orderAfterOption).afterOccurances(len);
-  expect(list.length).toBe(len);
+  const dateFinish = moment(currentDate).add(1, 'M');
+  const list = new DateRepetition(orderAfterOption).untilFinishDate(dateFinish);
   expect(aux.formatDate(list[0])).toBe(aux.formatDate(orderAfterOption.dateStart));
   for (const d of list) {
     const momentDay = moment(d);
     expect(momentDay.day()).toBe(day);
+    expect(dateFinish.toDate() - d.toDate()).toBeGreaterThanOrEqual(0);
     // expect(week.weekOrder(momentDay)).toBe(dateStartWeekOrder);
   }
 });
@@ -36,11 +36,13 @@ test('Validate the day repetition in days', () => {
     durationUnit: 'd',
   };
 
-  const len = 10;
-  const list = new DateRepetition(afterOption).afterOccurances(len);
-  expect(list.length).toBe(len);
+  const dateFinish = moment(currentDate).add(3, 'M');
+  const list = new DateRepetition(afterOption).untilFinishDate(dateFinish);
   expect(aux.formatDate(list[0])).toBe(aux.formatDate(afterOption.dateStart));
   expect(list.reduce(
     aux.isEqualDiff(afterOption.durationAmount, afterOption.durationUnit),
   )).toBe(true);
+  for (const d of list) {
+    expect(dateFinish.toDate() - d.toDate()).toBeGreaterThanOrEqual(0);
+  }
 });
