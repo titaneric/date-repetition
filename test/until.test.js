@@ -8,7 +8,7 @@ import DateRepetition from '../src/repetition';
 import aux from '../src/testAux';
 
 test('Validate the day repetition of monthly ordinal week', () => {
-  const currentDate = faker.date.recent(); // The fourth Sunday in July
+  const currentDate = faker.date.recent();
   const day = moment(currentDate).day();
   const orderAfterOption = {
     dateStart: currentDate,
@@ -29,7 +29,7 @@ test('Validate the day repetition of monthly ordinal week', () => {
 });
 
 test('Validate the day repetition in days', () => {
-  const currentDate = faker.date.recent(); // The fourth Sunday in July
+  const currentDate = faker.date.recent();
   const afterOption = {
     dateStart: currentDate,
     durationAmount: 1,
