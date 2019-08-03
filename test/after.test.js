@@ -7,6 +7,16 @@ import faker from 'faker';
 import DateRepetition from '../src/repetition';
 import aux from '../src/testAux';
 
+test('Validate default parameter', () => {
+  const len = 10;
+  const list = new DateRepetition().afterOccurances(len);
+  expect(list.length).toBe(len);
+  expect(aux.formatDate(list[0])).toBe(aux.formatDate(moment(new Date())));
+  expect(list.reduce(
+    aux.isEqualDiff(1, 'w'),
+  )).toBe(true);
+});
+
 test('Validate the day repetition of monthly ordinal week', () => {
   const currentDate = faker.date.recent();
   const day = moment(currentDate).day();

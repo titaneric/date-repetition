@@ -5,15 +5,17 @@ import week from './week';
 
 function* weeklyDayGenerator(option) {
   const dayStart = moment(option.dateStart);
-  let currentDay = dayStart.clone();
-
+  const currentWeek = moment(option.dateStart).startOf('w');
+  option.weekDayList.sort();
   while (true) {
     for (const weekDay of option.weekDayList) {
-      const day = currentDay.day(weekDay);
-      if (day >= dayStart) yield day;
+      const day = currentWeek.day(weekDay);
+      if (day.isSameOrAfter(dayStart, 'day')) {
+        yield day;
+      }
     }
 
-    currentDay = currentDay.add(option.durationAmount, option.durationUnit);
+    currentWeek.add(option.durationAmount, option.durationUnit);
   }
 }
 

@@ -10,7 +10,6 @@
     "src": "./src"
   },
   "dependencies": {
-    "circular-iterator": "^1.1.5",
     "moment": "^2.24.0"
   },
   "devDependencies": {
@@ -18,6 +17,7 @@
     "@babel/preset-env": "^7.5.5",
     "@vue/eslint-config-airbnb": "^4.0.1",
     "babel-jest": "^24.8.0",
+    "circular-iterator": "^1.1.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",

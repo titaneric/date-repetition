@@ -10,13 +10,25 @@ function isEqualDiff(durationAmount, durationUnit) {
       return true;
     }
 
-    const first = array[i - 2];
-    const second = array[i - 1];
-    const third = array[i];
+    const [first, second, third] = array.slice(i - 2, i + 1);
 
     return status && (second.diff(first, durationUnit) === third.diff(second, durationUnit))
-            && (third.diff(second, durationUnit) === durationAmount);
+      && (third.diff(second, durationUnit) === durationAmount);
   };
 }
 
-export default { isEqualDiff, formatDate };
+function isLargeThanDayStart(dayStart) {
+  return element => element >= dayStart;
+}
+
+function rightWeekOrder(weekDayList, dateStart) {
+  let reorderedList = weekDayList.map(item => (item === 0 ? 7 : item));
+  const dayStart = moment(dateStart).day();
+  reorderedList.sort();
+  const insertIndex = reorderedList.findIndex(isLargeThanDayStart(dayStart));
+  reorderedList = reorderedList.concat(reorderedList.splice(0, insertIndex));
+  reorderedList = reorderedList.map(item => (item === 7 ? 0 : item));
+  return reorderedList;
+}
+
+export default { isEqualDiff, formatDate, rightWeekOrder };

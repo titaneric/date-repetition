@@ -15,7 +15,8 @@
 - Repeat the specific week orders in month (E.g. Monthly on the second Sunday)
 
 ## Features
-
+ 
+ - ONLY depend on Moment.js
  - Help you to schedule your work
  - Could be used in room reservation, calendar etc.
 
