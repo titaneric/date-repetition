@@ -10,7 +10,7 @@ function isEqualDiff(durationAmount, durationUnit) {
       return true;
     }
 
-    const [first, second, third] = array.slice(i - 2, i + 1);
+    const [first, second, third] = array.slice(i - 2, i + 1).map(item => moment(item));
 
     return status && (second.diff(first, durationUnit) === third.diff(second, durationUnit))
       && (third.diff(second, durationUnit) === durationAmount);

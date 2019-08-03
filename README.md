@@ -20,6 +20,8 @@
  - Help you to schedule your work
  - Could be used in room reservation, calendar etc.
 
+---
+
 ## Install
 
 ```bash
@@ -83,16 +85,18 @@ const order_after_option = {
 const list = new DateRepetition(order_after_option).afterOccurances(4);
 ```
 
+---
+
 ## Document
 
 ### Arguments
-| Name  | Meaning  | Available value  |
-|---|---|---|
-|  `dateStart` | The starting day to repeat | JS `Date` object  |
-|   `durationAmount`| The frequency to repeat, according to `durationUnit`  | positive integer  |
-|   `durationUnit`| The unit to repeat  | 'd'\|'w'\|'M'  |
-|  `weekDayList` | The array containing week days, **only** valid when `durationUnit` is **'w'**.  | optional or array consisted of [0-6], default value is [`moment(dateStart).day()`]  |
-|   `ordinalWeek`| **Only** when `durationUnit` is **'M'**, set **true** if you want to get the specific order in week monthly.  | optional or **true**  |
+| Name  | Meaning  | Available value  |Default value|
+|---|---|---|---|
+|  `dateStart` | The starting day to repeat | JS `Date` object  | new Date() |
+|   `durationAmount`| The frequency to repeat, according to `durationUnit`  | positive integer  | 1|
+|   `durationUnit`| The unit to repeat  | 'd'\|'w'\|'M'  |'w'|
+|  `weekDayList` | The array containing week days, **only** valid when `durationUnit` is **'w'**.  | optional or array consisted of [0-6]  |[`moment(dateStart).day()`]|
+|   `ordinalWeek`| **Only** when `durationUnit` is **'M'**, set **true** if you want to get the specific order in week monthly.  | optional or **true**  |false|
 
 Note that the `durationUnit` and value in `weekDayList` follow the Moment.js convention, please refer to [documentation](https://momentjs.com/docs/#/manipulating/).
 
@@ -112,6 +116,16 @@ Note that the `durationUnit` and value in `weekDayList` follow the Moment.js con
 |---|---|---|
 |  `dateFinish` | Repeat until the finishing day | JS `Date` object  |
 
+### No repeat
+
+*noRepeat()*
+
+### Return
+
+**Array of JS Date object.**
+
+---
+
 ## Todo
 
  - Strict and tough test process
@@ -124,10 +138,11 @@ Note that the `durationUnit` and value in `weekDayList` follow the Moment.js con
 
    Just leave a note for keeping the experience.
 
-   Practice to learn
+   What I learned
 
     - Airbnb coding style
     - ES6 Generator feature
+    - Better class design
     - fundamental Jest for unit test
     - Travis for CI/CD
     - Wrap a npm package

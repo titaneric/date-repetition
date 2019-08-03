@@ -31,7 +31,7 @@ export default class DateRepetition {
       let k = 0;
       do {
         day = gen.next().value;
-        list.push(day.clone());
+        list.push(day.clone().toDate());
         k += 1;
       } while (this.option.durationUnit === 'w' && k < this.option.weekDayList.length);
     }
@@ -47,13 +47,13 @@ export default class DateRepetition {
     let day = this.option.momentDateStart;
 
     while ((day = gen.next().value) <= momentDateFinish) {
-      list.push(day.clone());
+      list.push(day.clone().toDate());
     }
 
     return list;
   }
 
   noRepeat() {
-    return [this.option.momentDateStart];
+    return [this.option.dateStart];
   }
 }

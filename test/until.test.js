@@ -23,7 +23,7 @@ test('Validate the day repetition of monthly ordinal week', () => {
   for (const d of list) {
     const momentDay = moment(d);
     expect(momentDay.day()).toBe(day);
-    expect(dateFinish.toDate() - d.toDate()).toBeGreaterThanOrEqual(0);
+    expect(momentDay.isSameOrBefore(dateFinish)).toBe(true);
     // expect(week.weekOrder(momentDay)).toBe(dateStartWeekOrder);
   }
 });
@@ -43,6 +43,6 @@ test('Validate the day repetition in days', () => {
     aux.isEqualDiff(afterOption.durationAmount, afterOption.durationUnit),
   )).toBe(true);
   for (const d of list) {
-    expect(dateFinish.toDate() - d.toDate()).toBeGreaterThanOrEqual(0);
+    expect(moment(d).isSameOrBefore(dateFinish)).toBe(true);
   }
 });

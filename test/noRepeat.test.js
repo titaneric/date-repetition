@@ -1,7 +1,6 @@
 /* eslint-disable no-restricted-syntax */
 /* global test expect */
 
-import moment from 'moment';
 import faker from 'faker';
 
 import DateRepetition from '../src/repetition';
@@ -9,6 +8,7 @@ import aux from '../src/testAux';
 
 test('Validate the day repetition of monthly ordinal week', () => {
   const currentDate = faker.date.recent();
+  console.log(currentDate)
   const option = {
     dateStart: currentDate,
   };
