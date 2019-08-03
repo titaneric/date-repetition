@@ -16,7 +16,6 @@
 
 ## Features
 
- - ONLY depend on Moment.js
  - Help you to schedule your work
  - Could be used in room reservation, calendar etc.
 
@@ -91,8 +90,8 @@ const list = new DateRepetition(order_after_option).afterOccurances(4);
 |  `dateStart` | The starting day to repeat | JS `Date` object  |
 |   `durationAmount`| The frequency to repeat, according to `durationUnit`  | positive integer  |
 |   `durationUnit`| The unit to repeat  | 'd'\|'w'\|'M'  |
-|  `weekDayList` | The array containing week days, only valid when `durationUnit` is **'w'**.  | optional or array consisted of [0-6]  |
-|   `ordinalWeek`| When `durationUnit` is **'M'**, set **true** if you want to get the specific order in week monthly.  | optional or **true**  |
+|  `weekDayList` | The array containing week days, **only** valid when `durationUnit` is **'w'**.  | optional or array consisted of [0-6], default value is [`moment(dateStart).day()`]  |
+|   `ordinalWeek`| **Only** when `durationUnit` is **'M'**, set **true** if you want to get the specific order in week monthly.  | optional or **true**  |
 
 Note that the `durationUnit` and value in `weekDayList` follow the Moment.js convention, please refer to [documentation](https://momentjs.com/docs/#/manipulating/).
 
@@ -115,8 +114,8 @@ Note that the `durationUnit` and value in `weekDayList` follow the Moment.js con
 ## Todo
 
  - Strict and tough test process
- - Rewrite the weekOrder to support for 'last' Sunday monthly.
- - Better test component in Vue.
+ - Support for 'last' weekday monthly (the fourth and the fifth).
+ - Better demo component in Vue.
 
 ## Remark
 

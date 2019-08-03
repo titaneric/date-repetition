@@ -6,8 +6,19 @@ import week from './week';
 import dateGenerator from './generator';
 
 export default class DateRepetition {
-  constructor(option) {
-    this.option = { ...option, ...week.getDateInfo(option.dateStart) };
+  constructor({
+    dateStart = new Date(),
+    weekDayList = [moment(dateStart).day()],
+    durationAmount = 1,
+    durationUnit = 'w',
+    ordinalWeek = false,
+  } = {}) {
+    this.option = {
+      ...{
+        dateStart, weekDayList: weekDayList.slice(), durationUnit, durationAmount, ordinalWeek,
+      },
+      ...week.getDateInfo(dateStart),
+    };
   }
 
   afterOccurances(occurances) {
