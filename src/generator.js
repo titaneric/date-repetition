@@ -11,7 +11,7 @@ function* weeklyDayGenerator(option) {
     for (const weekDay of option.weekDayList) {
       const day = currentWeek.day(weekDay);
       if (day.isSameOrAfter(dayStart, 'day')) {
-        yield day;
+        yield day.clone().toDate();
       }
     }
 
@@ -24,7 +24,7 @@ function* monthlyOnOrdinalDayGenerator(option) {
   let currentDay = dayStart.clone();
 
   while (true) {
-    yield currentDay;
+    yield currentDay.clone().toDate();
     const nextMonth = currentDay
       .add(option.durationAmount, option.durationUnit);
 
@@ -39,7 +39,7 @@ function* normalRepeatedDayGenerator(option) {
   const dayStart = moment(option.dateStart);
   let currentDay = dayStart.clone();
   while (true) {
-    yield currentDay;
+    yield currentDay.clone().toDate();
     currentDay = currentDay.add(option.durationAmount, option.durationUnit);
   }
 }

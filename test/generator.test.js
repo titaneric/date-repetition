@@ -28,7 +28,7 @@ test('Validate the correctness of weeklyDayGenerator', () => {
   for (let i = 0; i < len; i += 1) {
     const nextDay = gen.next().value;
     const expectedDay = dayGen.next().value;
-    expect(nextDay.day()).toBe(expectedDay);
+    expect(moment(nextDay).day()).toBe(expectedDay);
   }
 });
 
@@ -47,7 +47,7 @@ test('Validate the correctness of monthlyOnOrdinalDayGenerator', () => {
   const gen = dateGenerator(orderAfterOption);
   for (let i = 0; i < len; i += 1) {
     const nextDay = gen.next().value;
-    expect(nextDay.day()).toBe(day);
+    expect(moment(nextDay).day()).toBe(day);
   }
 });
 
@@ -63,8 +63,7 @@ test('Validate the correctness of normalRepeatedDayGenerator', () => {
   const len = 10;
   const list = [];
   for (let i = 0; i < len; i += 1) {
-    const v = gen.next().value;
-    list.push(v.clone());
+    list.push(gen.next().value);
   }
   expect(aux.formatDate(list[0])).toBe(aux.formatDate(afterOption.dateStart));
   expect(list.reduce(
