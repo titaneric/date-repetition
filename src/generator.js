@@ -19,19 +19,28 @@ function* weeklyDayGenerator(option) {
   }
 }
 
+function getNextMonthlyDay(currentDay, option) {
+  const nextMonth = currentDay
+    .add(option.durationAmount, option.durationUnit);
+
+  const nextDay = week.nextDayOfStartOfMonth(nextMonth, option.momentDateStart.format('ddd'));
+
+  if (option.isLastWeek) {
+    return week.nextDayOfEndOfMonth(nextDay);
+  }
+
+  return nextDay
+    .add(option.weekOrder - 1, 'week')
+    .day(option.momentDateStart.format('ddd'));
+}
+
 function* monthlyOnOrdinalDayGenerator(option) {
   const dayStart = moment(option.dateStart);
   let currentDay = dayStart.clone();
 
   while (true) {
     yield currentDay.clone().toDate();
-    const nextMonth = currentDay
-      .add(option.durationAmount, option.durationUnit);
-
-    const nextDay = week.nextDayOfStartOfMonth(nextMonth, option.momentDateStart.format('ddd'));
-    currentDay = nextDay
-      .add(option.weekOrder - 1, 'week')
-      .day(option.momentDateStart.format('ddd'));
+    currentDay = getNextMonthlyDay(currentDay, option);
   }
 }
 

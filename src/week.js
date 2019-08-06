@@ -5,13 +5,31 @@ function nextDayOfStartOfMonth(baseDay, dayINeed = moment(baseDay).day()) {
 
   const startOfMonth = momentDate.clone().startOf('month');
 
-  let nextDay = startOfMonth.clone().day(dayINeed);
+  const nextDay = startOfMonth.clone().day(dayINeed);
 
-  if (nextDay < startOfMonth) {
-    nextDay = nextDay.add(1, 'week');
+  if (nextDay.isBefore(startOfMonth)) {
+    nextDay.add(1, 'week');
   }
 
   return nextDay;
+}
+
+function nextDayOfEndOfMonth(baseDay, dayINeed = moment(baseDay).day()) {
+  const momentDate = moment(baseDay);
+
+  const endOfMonth = momentDate.clone().endOf('month');
+
+  const nextDay = endOfMonth.clone().day(dayINeed);
+
+  if (nextDay.isAfter(endOfMonth)) {
+    nextDay.subtract(1, 'week');
+  }
+
+  return nextDay;
+}
+
+function isLastWeekOfMonth(day) {
+  return moment().isSame(nextDayOfEndOfMonth(day));
 }
 
 function weekOrder(d) {
@@ -27,7 +45,13 @@ function getDateInfo(d) {
     monthDay: moment(d).format('D'),
     momentDateStart: moment(d),
     weekOrder: weekOrder(d),
+    isLastWeek: isLastWeekOfMonth(d),
   };
 }
 
-export default { weekOrder, nextDayOfStartOfMonth, getDateInfo };
+export default {
+  weekOrder,
+  nextDayOfStartOfMonth,
+  nextDayOfEndOfMonth,
+  getDateInfo,
+};
