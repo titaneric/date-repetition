@@ -8,7 +8,6 @@ import aux from '../src/testAux';
 
 test('Validate the day repetition of monthly ordinal week', () => {
   const currentDate = faker.date.recent();
-  console.log(currentDate)
   const option = {
     dateStart: currentDate,
   };
