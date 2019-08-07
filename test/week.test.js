@@ -41,6 +41,16 @@ test('Validate the correctness of nextDayOfEndOfMonth', () => {
   expect(nextDay.month()).toBe(currentMonth);
 });
 
+test('Validate the correctness of isLastWeekOfMonth', () => {
+  const currentDate = faker.date.recent();
+  let nextDay = week.nextDayOfEndOfMonth(currentDate);
+  // Test the week day corretness
+  expect(week.isLastWeekOfMonth(nextDay)).toBe(true);
+
+  nextDay = week.nextDayOfStartOfMonth(currentDate);
+  expect(week.isLastWeekOfMonth(nextDay)).toBe(false);
+});
+
 test('Validate the correctness of weekOrder', () => {
   const currentDate = faker.date.recent();
   const momentDay = moment(currentDate);

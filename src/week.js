@@ -29,7 +29,7 @@ function nextDayOfEndOfMonth(baseDay, dayINeed = moment(baseDay).day()) {
 }
 
 function isLastWeekOfMonth(day) {
-  return moment().isSame(nextDayOfEndOfMonth(day));
+  return moment(day).isSame(nextDayOfEndOfMonth(day), 'day');
 }
 
 function weekOrder(d) {
@@ -54,4 +54,5 @@ export default {
   nextDayOfStartOfMonth,
   nextDayOfEndOfMonth,
   getDateInfo,
+  isLastWeekOfMonth,
 };

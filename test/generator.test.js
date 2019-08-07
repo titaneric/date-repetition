@@ -51,6 +51,27 @@ test('Validate the correctness of monthlyOnOrdinalDayGenerator', () => {
   }
 });
 
+test('Validate the last week feature of monthlyOnOrdinalDayGenerator', () => {
+  const currentDate = faker.date.recent();
+  const lastWeek = week.nextDayOfEndOfMonth(currentDate);
+  const day = moment(lastWeek).day();
+  let orderAfterOption = {
+    dateStart: lastWeek,
+    durationAmount: 1,
+    durationUnit: 'M',
+    ordinalWeek: true,
+  };
+  orderAfterOption = { ...orderAfterOption, ...week.getDateInfo(orderAfterOption.dateStart) };
+  expect(orderAfterOption.isLastWeek).toBe(true);
+  const len = 10;
+  const gen = dateGenerator(orderAfterOption);
+  for (let i = 0; i < len; i += 1) {
+    const nextDay = gen.next().value;
+    expect(moment(nextDay).day()).toBe(day);
+    expect(week.isLastWeekOfMonth(nextDay)).toBe(true);
+  }
+});
+
 test('Validate the correctness of normalRepeatedDayGenerator', () => {
   const currentDate = faker.date.recent();
   const afterOption = {
