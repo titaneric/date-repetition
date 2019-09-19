@@ -129,7 +129,6 @@ Note that the `durationUnit` and value in `weekDayList` follow the Moment.js con
 ## Todo
 
  - Strict and tough test process
- - Support for 'last' weekday monthly (the fourth and the fifth).
  - Better demo component in Vue.
 
 ## Remark
@@ -143,7 +142,7 @@ Note that the `durationUnit` and value in `weekDayList` follow the Moment.js con
     - Airbnb coding style
     - ES6 Generator feature
     - Better class design
-    - fundamental Jest for unit test
+    - Fundamental Jest for unit test
     - Travis for CI/CD
     - Wrap a npm package
     - Some elementary knowledge for webpack, babel and npm

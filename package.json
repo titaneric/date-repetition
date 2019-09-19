@@ -40,7 +40,5 @@
     "url": "https://github.com/titaneric/date-repetition/issues"
   },
   "homepage": "https://github.com/titaneric/date-repetition#readme",
-  "publishConfig": {
-    "access": "publish"
-  }
+  "publishConfig": { "registry": "https://npm.pkg.github.com/@titaneric" }
 }
