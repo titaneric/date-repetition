@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/titaneric/date-repetition.git"
+    "url": "git://github.com/titaneric/date-repetition.git"
   },
   "author": "TitanEric",
   "license": "GPL",
